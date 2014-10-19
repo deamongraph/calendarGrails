@@ -2,29 +2,15 @@ package practica8_20091275_20101022
 
 import grails.converters.JSON
 
-import static org.grails.datastore.gorm.GormStaticApi.count
-import static org.grails.datastore.gorm.GormStaticApi.findAll
-import static org.grails.datastore.gorm.GormStaticApi.list
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class EventoCalendarioController {
-
+    def index = { redirect(action:list,params:params) }
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond EventoCalendario.list(params), model: [eventoCalendarioInstanceCount: EventoCalendario.count()]
-    }
 
-    def show(EventoCalendario eventoCalendarioInstance) {
-        respond eventoCalendarioInstance
-    }
-
-    def create() {
-        respond new EventoCalendario(params)
-    }
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
         [ EventoCalendarioInstanceList: list( params ), EventoCalendarioInstanceTotal: count() ]
@@ -39,9 +25,8 @@ class EventoCalendarioController {
         if(params.end) lcal.setTime(new Date(Long.parseLong(params.end)))
 
         //query events from database
-        def listOfEvents = findAll("from EventoCalendario as \
-			ce where ce.startDate>:startDate AND ce.endDate<:endDate", \
-			[startDate: fcal.getTime(), endDate: lcal.getTime()])
+        def listOfEvents = EventoCalendario.findAll("from EventoCalendario as ce where ce.startDate>:startDate AND ce.endDate<:endDate", \
+			[startDate:fcal.getTime(), endDate:lcal.getTime()])
 
         //construct returned event data
         def listOfJsEvents = []
@@ -92,6 +77,14 @@ class EventoCalendarioController {
         //render result as JSON data
         render resultAsJson as JSON
     }
+    def show(EventoCalendario eventoCalendarioInstance) {
+        respond eventoCalendarioInstance
+    }
+
+    def create() {
+        respond new EventoCalendario(params)
+    }
+
     @Transactional
     def save(EventoCalendario eventoCalendarioInstance) {
         if (eventoCalendarioInstance == null) {

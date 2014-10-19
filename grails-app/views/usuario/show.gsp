@@ -68,6 +68,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${usuarioInstance?.calendario}">
+				<li class="fieldcontain">
+					<span id="calendario-label" class="property-label"><g:message code="usuario.calendario.label" default="Calendario" /></span>
+					
+						<span class="property-value" aria-labelledby="calendario-label"><g:link controller="eventoCalendario" action="show" id="${usuarioInstance?.calendario?.id}">${usuarioInstance?.calendario?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form url="[resource:usuarioInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

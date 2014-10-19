@@ -47,3 +47,12 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'calendario', 'error')} ">
+	<label for="calendario">
+		<g:message code="usuario.calendario.label" default="Calendario" />
+		
+	</label>
+	<g:select id="calendario" name="calendario.id" from="${practica8_20091275_20101022.EventoCalendario.list()}" optionKey="id" value="${usuarioInstance?.calendario?.id}" class="many-to-one" noSelection="['null': '']"/>
+
+</div>
+

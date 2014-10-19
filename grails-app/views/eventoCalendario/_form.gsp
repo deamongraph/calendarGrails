@@ -2,12 +2,12 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: eventoCalendarioInstance, field: 'allDay', 'error')} ">
-	<label for="allDay">
-		<g:message code="eventoCalendario.allDay.label" default="All Day" />
-		
+<div class="fieldcontain ${hasErrors(bean: eventoCalendarioInstance, field: 'startDate', 'error')} required">
+	<label for="startDate">
+		<g:message code="eventoCalendario.startDate.label" default="Start Date" />
+		<span class="required-indicator">*</span>
 	</label>
-	<g:checkBox name="allDay" value="${eventoCalendarioInstance?.allDay}" />
+	<g:datePicker name="startDate" precision="day"  value="${eventoCalendarioInstance?.startDate}"  />
 
 </div>
 
@@ -25,16 +25,25 @@
 		<g:message code="eventoCalendario.endDate.label" default="End Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="endDate" precision="minute"  value="${eventoCalendarioInstance?.endDate}"  />
+	<g:datePicker name="endDate" precision="day"  value="${eventoCalendarioInstance?.endDate}"  />
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: eventoCalendarioInstance, field: 'startDate', 'error')} required">
-	<label for="startDate">
-		<g:message code="eventoCalendario.startDate.label" default="Start Date" />
+<div class="fieldcontain ${hasErrors(bean: eventoCalendarioInstance, field: 'allDay', 'error')} ">
+	<label for="allDay">
+		<g:message code="eventoCalendario.allDay.label" default="All Day" />
+		
+	</label>
+	<g:checkBox name="allDay" value="${eventoCalendarioInstance?.allDay}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: eventoCalendarioInstance, field: 'usuario', 'error')} required">
+	<label for="usuario">
+		<g:message code="eventoCalendario.usuario.label" default="Usuario" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="startDate" precision="minute"  value="${eventoCalendarioInstance?.startDate}"  />
+	<g:select id="usuario" name="usuario.id" from="${practica8_20091275_20101022.Usuario.list()}" optionKey="id" required="" value="${eventoCalendarioInstance?.usuario?.id}" class="many-to-one"/>
 
 </div>
 

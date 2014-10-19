@@ -7,15 +7,15 @@ import org.springframework.format.annotation.DateTimeFormat
 
 @Resource(uri = "/calendario", formats = ["html"] )
 class EventoCalendario {
-
     String description // description of the event
     Date startDate // event start date
     Date endDate // event end date
     Boolean allDay // is all day event?
-
-
+    //static belongsTo = [usuario:Usuario]
+    static hasOne = [usuario:Usuario]
     static constraints = {
-        startDate blank: false, unique:true
+
+        startDate blank: false
         description blank:false
         endDate validator: { value, season ->
             return value && value > season.startDate

@@ -7,7 +7,8 @@ class Usuario {
     String email
     String nombres
     int tiempo
-    static belongsTo = EventoCalendario
+   // EventoCalendario calendario = new EventoCalendario();
+    EventoCalendario calendario
     // static transients = ['springSecurityService']
     static constraints = {
         nombreusuario blank: false, unique:true
@@ -15,6 +16,10 @@ class Usuario {
         nombres blank: true
         email email: true, blank: false, unique: true
         tiempo blank: false, min: 0
+        calendario nullable: true
     }
 
+    static mapping = {
+        table 'usuario'
+    }
 }

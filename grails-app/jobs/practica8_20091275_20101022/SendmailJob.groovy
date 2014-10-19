@@ -11,7 +11,15 @@ class SendmailJob {
         // execute job
       //aqui debo comprobar si para cada usuario registrado se cumple que el (TIEMPO ACTUAL - tiempo puesto)  = /
       //entonces enviar correo
-        println("Hola frangel")
+        Date now = new Date()
+
+        def results = EventoCalendario.findAll {
+            startDate == now
+        }
+        if(results.contains(now))
+            println(now)
+
+
 
 
     }

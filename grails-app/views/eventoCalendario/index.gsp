@@ -24,13 +24,15 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="allDay" title="${message(code: 'eventoCalendario.allDay.label', default: 'All Day')}" />
+						<g:sortableColumn property="startDate" title="${message(code: 'eventoCalendario.startDate.label', default: 'Start Date')}" />
 					
 						<g:sortableColumn property="description" title="${message(code: 'eventoCalendario.description.label', default: 'Description')}" />
 					
 						<g:sortableColumn property="endDate" title="${message(code: 'eventoCalendario.endDate.label', default: 'End Date')}" />
 					
-						<g:sortableColumn property="startDate" title="${message(code: 'eventoCalendario.startDate.label', default: 'Start Date')}" />
+						<g:sortableColumn property="allDay" title="${message(code: 'eventoCalendario.allDay.label', default: 'All Day')}" />
+					
+						<th><g:message code="eventoCalendario.usuario.label" default="Usuario" /></th>
 					
 					</tr>
 				</thead>
@@ -38,13 +40,15 @@
 				<g:each in="${eventoCalendarioInstanceList}" status="i" var="eventoCalendarioInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${eventoCalendarioInstance.id}">${fieldValue(bean: eventoCalendarioInstance, field: "allDay")}</g:link></td>
+						<td><g:link action="show" id="${eventoCalendarioInstance.id}">${fieldValue(bean: eventoCalendarioInstance, field: "startDate")}</g:link></td>
 					
 						<td>${fieldValue(bean: eventoCalendarioInstance, field: "description")}</td>
 					
 						<td><g:formatDate date="${eventoCalendarioInstance.endDate}" /></td>
 					
-						<td><g:formatDate date="${eventoCalendarioInstance.startDate}" /></td>
+						<td><g:formatBoolean boolean="${eventoCalendarioInstance.allDay}" /></td>
+					
+						<td>${fieldValue(bean: eventoCalendarioInstance, field: "usuario")}</td>
 					
 					</tr>
 				</g:each>

@@ -23,11 +23,11 @@
 			</g:if>
 			<ol class="property-list eventoCalendario">
 			
-				<g:if test="${eventoCalendarioInstance?.allDay}">
+				<g:if test="${eventoCalendarioInstance?.startDate}">
 				<li class="fieldcontain">
-					<span id="allDay-label" class="property-label"><g:message code="eventoCalendario.allDay.label" default="All Day" /></span>
+					<span id="startDate-label" class="property-label"><g:message code="eventoCalendario.startDate.label" default="Start Date" /></span>
 					
-						<span class="property-value" aria-labelledby="allDay-label"><g:formatBoolean boolean="${eventoCalendarioInstance?.allDay}" /></span>
+						<span class="property-value" aria-labelledby="startDate-label"><g:formatDate date="${eventoCalendarioInstance?.startDate}" /></span>
 					
 				</li>
 				</g:if>
@@ -50,11 +50,20 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${eventoCalendarioInstance?.startDate}">
+				<g:if test="${eventoCalendarioInstance?.allDay}">
 				<li class="fieldcontain">
-					<span id="startDate-label" class="property-label"><g:message code="eventoCalendario.startDate.label" default="Start Date" /></span>
+					<span id="allDay-label" class="property-label"><g:message code="eventoCalendario.allDay.label" default="All Day" /></span>
 					
-						<span class="property-value" aria-labelledby="startDate-label"><g:formatDate date="${eventoCalendarioInstance?.startDate}" /></span>
+						<span class="property-value" aria-labelledby="allDay-label"><g:formatBoolean boolean="${eventoCalendarioInstance?.allDay}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${eventoCalendarioInstance?.usuario}">
+				<li class="fieldcontain">
+					<span id="usuario-label" class="property-label"><g:message code="eventoCalendario.usuario.label" default="Usuario" /></span>
+					
+						<span class="property-value" aria-labelledby="usuario-label"><g:link controller="usuario" action="show" id="${eventoCalendarioInstance?.usuario?.id}">${eventoCalendarioInstance?.usuario?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
