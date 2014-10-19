@@ -68,11 +68,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${usuarioInstance?.calendario}">
+				<g:if test="${usuarioInstance?.calendariousuario}">
 				<li class="fieldcontain">
-					<span id="calendario-label" class="property-label"><g:message code="usuario.calendario.label" default="Calendario" /></span>
+					<span id="calendariousuario-label" class="property-label"><g:message code="usuario.calendariousuario.label" default="Calendariousuario" /></span>
 					
-						<span class="property-value" aria-labelledby="calendario-label"><g:link controller="eventoCalendario" action="show" id="${usuarioInstance?.calendario?.id}">${usuarioInstance?.calendario?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="calendariousuario-label"><g:link controller="calendarioUsuario" action="show" id="${usuarioInstance?.calendariousuario?.id}">${usuarioInstance?.calendariousuario?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

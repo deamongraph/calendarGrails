@@ -1,5 +1,5 @@
 package practica8_20091275_20101022
-
+import practica8_20091275_20101022.CalendarioUsuario
 class Usuario {
     //transient springSecurityService
     String nombreusuario
@@ -8,7 +8,8 @@ class Usuario {
     String nombres
     int tiempo
    // EventoCalendario calendario = new EventoCalendario();
-    EventoCalendario calendario
+    //CalendarioUsuario calendario
+    static hasOne = [Calendariousuario:CalendarioUsuario]
     // static transients = ['springSecurityService']
     static constraints = {
         nombreusuario blank: false, unique:true
@@ -16,7 +17,7 @@ class Usuario {
         nombres blank: true
         email email: true, blank: false, unique: true
         tiempo blank: false, min: 0
-        calendario nullable: true
+
     }
 
     static mapping = {

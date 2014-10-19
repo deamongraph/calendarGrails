@@ -12,7 +12,7 @@ class EventoCalendario {
     Date endDate // event end date
     Boolean allDay // is all day event?
     //static belongsTo = [usuario:Usuario]
-    static hasOne = [usuario:Usuario]
+
     static constraints = {
 
         startDate blank: false

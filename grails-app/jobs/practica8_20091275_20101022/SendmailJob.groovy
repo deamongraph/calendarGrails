@@ -9,18 +9,19 @@ class SendmailJob {
 
     def execute() {
         // execute job
-      //aqui debo comprobar si para cada usuario registrado se cumple que el (TIEMPO ACTUAL - tiempo puesto)  = /
-      //entonces enviar correo
+        //aqui debo comprobar si para cada usuario registrado se cumple que el (TIEMPO ACTUAL - tiempo puesto)  = /
+        //entonces enviar correo
+        //println("hola")
         Date now = new Date()
+        List<Usuario> usuarios = Usuario.findAll();
+        //print(usuarios.tiempo)
+        for (Usuario usr : usuarios) {
 
-        def results = EventoCalendario.findAll {
-            startDate == now
-        }
-        if(results.contains(now))
-            println(now)
+        now.setMinutes(now.minutes + usr.tiempo) // la fecha de ahora + el tiempo del usurio
+        print(now)
+        println(EventoCalendario.findAllByStartDateGreaterThan(now))
 
 
-
-
+         }
     }
 }

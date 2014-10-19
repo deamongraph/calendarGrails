@@ -34,7 +34,7 @@
 					
 						<g:sortableColumn property="tiempo" title="${message(code: 'usuario.tiempo.label', default: 'Tiempo')}" />
 					
-						<th><g:message code="usuario.calendario.label" default="Calendario" /></th>
+						<th><g:message code="usuario.calendariousuario.label" default="Calendariousuario" /></th>
 					
 					</tr>
 				</thead>
@@ -52,7 +52,7 @@
 					
 						<td>${fieldValue(bean: usuarioInstance, field: "tiempo")}</td>
 					
-						<td>${fieldValue(bean: usuarioInstance, field: "calendario")}</td>
+						<td>${fieldValue(bean: usuarioInstance, field: "calendariousuario")}</td>
 					
 					</tr>
 				</g:each>

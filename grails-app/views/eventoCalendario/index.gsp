@@ -32,8 +32,6 @@
 					
 						<g:sortableColumn property="allDay" title="${message(code: 'eventoCalendario.allDay.label', default: 'All Day')}" />
 					
-						<th><g:message code="eventoCalendario.usuario.label" default="Usuario" /></th>
-					
 					</tr>
 				</thead>
 				<tbody>
@@ -47,8 +45,6 @@
 						<td><g:formatDate date="${eventoCalendarioInstance.endDate}" /></td>
 					
 						<td><g:formatBoolean boolean="${eventoCalendarioInstance.allDay}" /></td>
-					
-						<td>${fieldValue(bean: eventoCalendarioInstance, field: "usuario")}</td>
 					
 					</tr>
 				</g:each>

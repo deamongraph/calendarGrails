@@ -7,7 +7,7 @@
 		<g:message code="eventoCalendario.startDate.label" default="Start Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="startDate" precision="day"  value="${eventoCalendarioInstance?.startDate}"  />
+	<g:datePicker name="startDate" precision="minute"  value="${eventoCalendarioInstance?.startDate}"  />
 
 </div>
 
@@ -25,7 +25,7 @@
 		<g:message code="eventoCalendario.endDate.label" default="End Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="endDate" precision="day"  value="${eventoCalendarioInstance?.endDate}"  />
+	<g:datePicker name="endDate" precision="minute"  value="${eventoCalendarioInstance?.endDate}"  />
 
 </div>
 
@@ -35,15 +35,6 @@
 		
 	</label>
 	<g:checkBox name="allDay" value="${eventoCalendarioInstance?.allDay}" />
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: eventoCalendarioInstance, field: 'usuario', 'error')} required">
-	<label for="usuario">
-		<g:message code="eventoCalendario.usuario.label" default="Usuario" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="usuario" name="usuario.id" from="${practica8_20091275_20101022.Usuario.list()}" optionKey="id" required="" value="${eventoCalendarioInstance?.usuario?.id}" class="many-to-one"/>
 
 </div>
 

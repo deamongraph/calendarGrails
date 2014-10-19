@@ -47,12 +47,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'calendario', 'error')} ">
-	<label for="calendario">
-		<g:message code="usuario.calendario.label" default="Calendario" />
-		
+<div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'calendariousuario', 'error')} required">
+	<label for="calendariousuario">
+		<g:message code="usuario.calendariousuario.label" default="Calendariousuario" />
+		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="calendario" name="calendario.id" from="${practica8_20091275_20101022.EventoCalendario.list()}" optionKey="id" value="${usuarioInstance?.calendario?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="calendariousuario" name="calendariousuario.id" from="${practica8_20091275_20101022.CalendarioUsuario.list()}" optionKey="id" required="" value="${usuarioInstance?.calendariousuario?.id}" class="many-to-one"/>
 
 </div>
 
