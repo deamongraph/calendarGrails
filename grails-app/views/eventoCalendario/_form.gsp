@@ -20,6 +20,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: eventoCalendarioInstance, field: 'usuario', 'error')} required">
+	<label for="usuario">
+		<g:message code="eventoCalendario.usuario.label" default="Usuario" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="usuario" required="" readonly="" value="${session.user.username}"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: eventoCalendarioInstance, field: 'endDate', 'error')} required">
 	<label for="endDate">
 		<g:message code="eventoCalendario.endDate.label" default="End Date" />

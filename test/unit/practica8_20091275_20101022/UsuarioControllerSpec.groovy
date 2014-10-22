@@ -5,7 +5,7 @@ import grails.test.mixin.*
 import spock.lang.*
 
 @TestFor(UsuarioController)
-@Mock(Usuario)
+@Mock(User)
 class UsuarioControllerSpec extends Specification {
 
     def populateValidParams(params) {
@@ -37,7 +37,7 @@ class UsuarioControllerSpec extends Specification {
         when: "The save action is executed with an invalid instance"
         request.contentType = FORM_CONTENT_TYPE
         request.method = 'POST'
-        def usuario = new Usuario()
+        def usuario = new User()
         usuario.validate()
         controller.save(usuario)
 
@@ -48,14 +48,14 @@ class UsuarioControllerSpec extends Specification {
         when: "The save action is executed with a valid instance"
         response.reset()
         populateValidParams(params)
-        usuario = new Usuario(params)
+        usuario = new User(params)
 
         controller.save(usuario)
 
         then: "A redirect is issued to the show action"
         response.redirectedUrl == '/usuario/show/1'
         controller.flash.message != null
-        Usuario.count() == 1
+        User.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -67,7 +67,7 @@ class UsuarioControllerSpec extends Specification {
 
         when: "A domain instance is passed to the show action"
         populateValidParams(params)
-        def usuario = new Usuario(params)
+        def usuario = new User(params)
         controller.show(usuario)
 
         then: "A model is populated containing the domain instance"
@@ -83,7 +83,7 @@ class UsuarioControllerSpec extends Specification {
 
         when: "A domain instance is passed to the edit action"
         populateValidParams(params)
-        def usuario = new Usuario(params)
+        def usuario = new User(params)
         controller.edit(usuario)
 
         then: "A model is populated containing the domain instance"
@@ -103,7 +103,7 @@ class UsuarioControllerSpec extends Specification {
 
         when: "An invalid domain instance is passed to the update action"
         response.reset()
-        def usuario = new Usuario()
+        def usuario = new User()
         usuario.validate()
         controller.update(usuario)
 
@@ -114,7 +114,7 @@ class UsuarioControllerSpec extends Specification {
         when: "A valid domain instance is passed to the update action"
         response.reset()
         populateValidParams(params)
-        usuario = new Usuario(params).save(flush: true)
+        usuario = new User(params).save(flush: true)
         controller.update(usuario)
 
         then: "A redirect is issues to the show action"
@@ -135,16 +135,16 @@ class UsuarioControllerSpec extends Specification {
         when: "A domain instance is created"
         response.reset()
         populateValidParams(params)
-        def usuario = new Usuario(params).save(flush: true)
+        def usuario = new User(params).save(flush: true)
 
         then: "It exists"
-        Usuario.count() == 1
+        User.count() == 1
 
         when: "The domain instance is passed to the delete action"
         controller.delete(usuario)
 
         then: "The instance is deleted"
-        Usuario.count() == 0
+        User.count() == 0
         response.redirectedUrl == '/usuario/index'
         flash.message != null
     }

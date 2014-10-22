@@ -17,7 +17,7 @@ class EventoCalendarioController {
     }
 
     def listAsJson = {
-
+        print(session.user.username)
         //get parameter 'startDate', 'endDate' from request
         def fcal = Calendar.getInstance()
         if(params.start) fcal.setTime(new Date(Long.parseLong(params.start)))
@@ -25,8 +25,9 @@ class EventoCalendarioController {
         if(params.end) lcal.setTime(new Date(Long.parseLong(params.end)))
 
         //query events from database
-        def listOfEvents = EventoCalendario.findAll("from EventoCalendario as ce where ce.startDate>:startDate AND ce.endDate<:endDate", \
-			[startDate:fcal.getTime(), endDate:lcal.getTime()])
+
+        def listOfEvents = EventoCalendario.findAll("from EventoCalendario as ce where ce.startDate>:startDate AND ce.endDate<:endDate AND ce.usuario=:User ", \
+			[startDate:fcal.getTime(), endDate:lcal.getTime(),User:session.user.username])
 
         //construct returned event data
         def listOfJsEvents = []
@@ -102,7 +103,7 @@ class EventoCalendarioController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'eventoCalendario.label', default: 'EventoCalendario'), eventoCalendarioInstance.id])
-                redirect eventoCalendarioInstance
+                redirect(controller:"EventoCalendario", action:"listAsCalendar")
             }
             '*' { respond eventoCalendarioInstance, [status: CREATED] }
         }
@@ -129,7 +130,7 @@ class EventoCalendarioController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'EventoCalendario.label', default: 'EventoCalendario'), eventoCalendarioInstance.id])
-                redirect eventoCalendarioInstance
+                redirect(controller:"EventoCalendario", action:"listAsCalendar")
             }
             '*' { respond eventoCalendarioInstance, [status: OK] }
         }
@@ -148,7 +149,7 @@ class EventoCalendarioController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'EventoCalendario.label', default: 'EventoCalendario'), eventoCalendarioInstance.id])
-                redirect action: "index", method: "GET"
+                redirect(controller:"EventoCalendario", action:"listAsCalendar")
             }
             '*' { render status: NO_CONTENT }
         }

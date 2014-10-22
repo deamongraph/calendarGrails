@@ -28,6 +28,8 @@
 					
 						<g:sortableColumn property="description" title="${message(code: 'eventoCalendario.description.label', default: 'Description')}" />
 					
+						<g:sortableColumn property="usuario" title="${message(code: 'eventoCalendario.usuario.label', default: 'Usuario')}" />
+					
 						<g:sortableColumn property="endDate" title="${message(code: 'eventoCalendario.endDate.label', default: 'End Date')}" />
 					
 						<g:sortableColumn property="allDay" title="${message(code: 'eventoCalendario.allDay.label', default: 'All Day')}" />
@@ -41,6 +43,8 @@
 						<td><g:link action="show" id="${eventoCalendarioInstance.id}">${fieldValue(bean: eventoCalendarioInstance, field: "startDate")}</g:link></td>
 					
 						<td>${fieldValue(bean: eventoCalendarioInstance, field: "description")}</td>
+					
+						<td>${fieldValue(bean: eventoCalendarioInstance, field: "usuario")}</td>
 					
 						<td><g:formatDate date="${eventoCalendarioInstance.endDate}" /></td>
 					

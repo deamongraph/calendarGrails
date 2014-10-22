@@ -4,11 +4,11 @@ class FiltroSesionFilters {
 
     def filters = {
         all(controller:'*', action:'*') {
-            before = {
-               /* if (!session.usuario && !controllerName.equals("Usuario") && !actionName.equals("login")
+            before = {/*
+               if (!session.user && !controllerName.equals("User") && !actionName.equals("login")
                         && !actionName.equals("authenticate")
                 ) {
-                    redirect(controller: "Usuario", action: 'login')
+                    redirect(controller: "User", action: 'login')
                     return false
                 }*/
             }
