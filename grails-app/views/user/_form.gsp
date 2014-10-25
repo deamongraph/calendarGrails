@@ -20,33 +20,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'nombres', 'error')} required">
-	<label for="nombres">
-		<g:message code="user.nombres.label" default="Nombres" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="nombres" required="" value="${userInstance?.nombres}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'email', 'error')} required">
-	<label for="email">
-		<g:message code="user.email.label" default="Email" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field type="email" name="email" required="" value="${userInstance?.email}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'tiempo', 'error')} required">
-	<label for="tiempo">
-		<g:message code="user.tiempo.label" default="Tiempo" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="tiempo" type="number" min="0" value="${userInstance.tiempo}" required=""/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'accountExpired', 'error')} ">
 	<label for="accountExpired">
 		<g:message code="user.accountExpired.label" default="Account Expired" />
@@ -65,12 +38,30 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'email', 'error')} required">
+	<label for="email">
+		<g:message code="user.email.label" default="Email" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="email" required="" value="${userInstance?.email}"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'enabled', 'error')} ">
 	<label for="enabled">
 		<g:message code="user.enabled.label" default="Enabled" />
 		
 	</label>
 	<g:checkBox name="enabled" value="${userInstance?.enabled}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'nombres', 'error')} required">
+	<label for="nombres">
+		<g:message code="user.nombres.label" default="Nombres" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="nombres" required="" value="${userInstance?.nombres}"/>
 
 </div>
 

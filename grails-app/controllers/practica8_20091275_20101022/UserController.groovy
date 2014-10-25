@@ -21,12 +21,11 @@ class UserController {
     def create() {
         respond new User(params)
     }
-    def login = {}
-
+    def login={}
     def authenticate = {
         def usuario = User.findByUsernameAndPassword(params.nombreusuario, params.contrasena)
         if(usuario){
-            session.user = usuario
+
             flash.message = "Bienvenido ${usuario.nombres}!"
             redirect(controller:"EventoCalendario", action:"listAsCalendar")
         }else{

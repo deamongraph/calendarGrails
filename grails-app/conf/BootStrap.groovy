@@ -12,12 +12,12 @@ class BootStrap {
         def roleUsuario = new Role(authority: "ROLE_USUARIO").save(failOnError: true);
 
         //creando el usuario.
-        def admin=new User(username: "admin", password: "admin", accountExpired: false, accountLocked: false, passwordExpired: false,email:"info@host809.com",tiempo:10, nombres: "frangel hernandez").save(failOnError: true);
-        def usuario=new User(username: "usuario", password: "usuario", accountExpired: false, accountLocked: false, passwordExpired: false,email:"brian@briandiaz.me",tiempo:10, nombres: "brian diaz").save(failOnError: true);
+        def admin=new User(username: "admin", password: "admin", accountExpired: false, accountLocked: false, passwordExpired: false,email:"info@host809.com", nombres: "frangel hernandez").save(failOnError: true);
+        def usuario=new User(username: "usuario", password: "usuario", accountExpired: false, accountLocked: false, passwordExpired: false,email:"brian@briandiaz.me", nombres: "brian diaz").save(failOnError: true);
 
         //asignando el usuario.
         UserRole.create(admin, roleAdmin, true);
-        UserRole.create(usuario, roleUsuario, true);
+        UserRole.create(usuario, roleAdmin, true);
 
        // def calendarioadmin =new CalendarioUsuario()
         /*def admin = new Usuario(nombreusuario:"admin",

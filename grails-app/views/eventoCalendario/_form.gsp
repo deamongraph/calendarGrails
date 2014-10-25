@@ -25,7 +25,16 @@
 		<g:message code="eventoCalendario.usuario.label" default="Usuario" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="usuario" required="" readonly="" value="${session.user.username}"/>
+	<g:textField name="usuario" required="" value="${sec.username()}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: eventoCalendarioInstance, field: 'preaviso', 'error')} required">
+	<label for="preaviso">
+		<g:message code="eventoCalendario.preaviso.label" default="Preaviso" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="preaviso" type="number" value="${eventoCalendarioInstance.preaviso}" required=""/>
 
 </div>
 
@@ -44,6 +53,15 @@
 		
 	</label>
 	<g:checkBox name="allDay" value="${eventoCalendarioInstance?.allDay}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: eventoCalendarioInstance, field: 'notificado', 'error')} ">
+	<label for="notificado">
+		<g:message code="eventoCalendario.notificado.label" default="Notificado" />
+		
+	</label>
+	<g:checkBox name="notificado" value="${eventoCalendarioInstance?.notificado}" />
 
 </div>
 

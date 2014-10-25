@@ -1,3 +1,4 @@
+
 <g:set var="entityName" value="${message(code: 'user.label', default: 'Usuario')}" />
 <g:applyLayout name="plantillaBootstrap">
     <content tag="header">

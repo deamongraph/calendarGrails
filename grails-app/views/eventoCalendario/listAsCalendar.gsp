@@ -140,7 +140,7 @@
                 <li><g:link uri="/"><i class="fa fa-home"></i> Inicio </g:link></li>
 
             </ul>
-            <% if(session.user){%>
+
             <ul class="nav navbar-nav">
             <li><g:link class="create" action="create"> <i class="fa fa-plus"></i>Nuevo evento</g:link></li>
 
@@ -148,15 +148,15 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= session.user.username %> <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= sec.username() %> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#"><%= session.user.username %></a></li>
+                        <li><a href="#"><%=sec.username() %></a></li>
                         <li class="divider"></li>
                         <li><g:link controller="user" action="logout">Salir</g:link></li>
                     </ul>
                 </li>
             </ul>
-            <%}%>
+
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <g:link controller="user" action="login">Login</g:link>

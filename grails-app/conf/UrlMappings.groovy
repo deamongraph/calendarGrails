@@ -7,7 +7,7 @@ class UrlMappings {
             }
         }
 
-        "/"(view:"/index")
+        "/"(view:"/eventoCalendario/listAsCalendar")
         "500"(view:'/error')
 	}
 }

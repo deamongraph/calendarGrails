@@ -89,6 +89,16 @@ environments {
     development {
         grails.logging.jul.usebridge = true
     }
+    grails {
+        mail {
+            host = "smtp.host809.com"
+            port = 587
+            username = "camacho@host809.com"
+            password = "camacho123"
+            props = ["mail.smtp.host":"mail.host809.com",
+                     "mail.smtp.port":"587"]
+        }
+    }
     production {
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
@@ -115,3 +125,21 @@ log4j.main = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'practica8_20091275_20101022.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'practica8_20091275_20101022.UserRole'
+grails.plugin.springsecurity.authority.className = 'practica8_20091275_20101022.Role'
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+	'/':                              ['permitAll'],
+	'/index':                         ['permitAll'],
+	'/index.gsp':                     ['permitAll'],
+	'/assets/**':                     ['permitAll'],
+	'/**/js/**':                      ['permitAll'],
+	'/**/css/**':                     ['permitAll'],
+	'/**/images/**':                  ['permitAll'],
+	'/**/favicon.ico':                ['permitAll'],
+    '/eventoCalendario/**':                ['ROLE_ADMIN'],
+    '/user/**':                ['ROLE_ADMIN'],
+]
+

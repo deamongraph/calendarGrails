@@ -17,7 +17,7 @@ class EventoCalendarioController {
     }
 
     def listAsJson = {
-        print(session.user.username)
+        print(sec.username())
         //get parameter 'startDate', 'endDate' from request
         def fcal = Calendar.getInstance()
         if(params.start) fcal.setTime(new Date(Long.parseLong(params.start)))
@@ -27,7 +27,7 @@ class EventoCalendarioController {
         //query events from database
 
         def listOfEvents = EventoCalendario.findAll("from EventoCalendario as ce where ce.startDate>:startDate AND ce.endDate<:endDate AND ce.usuario=:User ", \
-			[startDate:fcal.getTime(), endDate:lcal.getTime(),User:session.user.username])
+			[startDate:fcal.getTime(), endDate:lcal.getTime(),User:sec.username()])
 
         //construct returned event data
         def listOfJsEvents = []

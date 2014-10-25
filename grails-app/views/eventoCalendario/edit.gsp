@@ -1,4 +1,3 @@
-
 <g:set var="entityName" value="${message(code: 'eventoCalendario.label', default: 'eventoCalendario')}" />
 <g:applyLayout name="plantillaBootstrap">
     <content tag="header">

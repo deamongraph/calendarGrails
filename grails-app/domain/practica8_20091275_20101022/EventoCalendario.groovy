@@ -12,6 +12,8 @@ class EventoCalendario {
     Date endDate // event end date
     Boolean allDay // is all day event?
     String usuario
+    Boolean notificado
+    int preaviso
     //static belongsTo = [usuario:User]
 
     static EventoCalendario create(User user, boolean flush = false) {
@@ -19,11 +21,14 @@ class EventoCalendario {
         instance.save(flush: flush, insert: true)
         instance
     }
+
+
     static constraints = {
 
         startDate blank: false
         description blank:false
         usuario blank:true
+        preaviso blank:false
         endDate validator: { value, season ->
             return value && value > season.startDate
         }

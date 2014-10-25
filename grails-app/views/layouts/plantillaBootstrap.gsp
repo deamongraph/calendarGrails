@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><g:layoutTitle default="Mis Contactos"/></title>
+    <title><g:layoutTitle default="Calendario"/></title>
     <link rel="stylesheet" href="${createLinkTo(dir:'css',file:'fullcalendar.css')}" />
     <asset:stylesheet src="principal.css"/>
     <asset:javascript src="principal.js" />
@@ -49,7 +49,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><g:link uri="/"><i class="fa fa-home"></i> Inicio </g:link></li>
+                    <li><g:link uri="/eventoCalendario/listAsCalendar"><i class="fa fa-home"></i> Inicio </g:link></li>
 
                 </ul>
                 <% if(session.user){%>

@@ -45,7 +45,7 @@ class UserRole implements Serializable {
         instance
     }
 
-    static boolean remove(User u, Role r) {
+    static boolean remove(User u, Role r, boolean flush = false) {
         if (u == null || r == null) return false
 
         int rowCount = UserRole.where {
@@ -53,23 +53,35 @@ class UserRole implements Serializable {
                     role == Role.load(r.id)
         }.deleteAll()
 
+        if (flush) {
+            UserRole.withSession { it.flush() }
+        }
+
         rowCount > 0
     }
 
-    static void removeAll(User u) {
+    static void removeAll(User u, boolean flush = false) {
         if (u == null) return
 
         UserRole.where {
             user == User.load(u.id)
         }.deleteAll()
+
+        if (flush) {
+            UserRole.withSession { it.flush() }
+        }
     }
 
-    static void removeAll(Role r) {
+    static void removeAll(Role r, boolean flush = false) {
         if (r == null) return
 
         UserRole.where {
             role == Role.load(r.id)
         }.deleteAll()
+
+        if (flush) {
+            UserRole.withSession { it.flush() }
+        }
     }
 
     static constraints = {

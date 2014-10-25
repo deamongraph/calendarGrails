@@ -59,7 +59,7 @@ security {
 	afterInvocationManagerProviderNames = []
 
 	// HttpSessionEventPublisher
-	useHttpSessionEventPublisher = false
+	useHttpSessionEventPublisher = true
 
 	// SecurityEventListener
 	useSecurityEventListener = false
