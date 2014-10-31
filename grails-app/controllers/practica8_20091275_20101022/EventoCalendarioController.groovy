@@ -7,11 +7,13 @@ import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class EventoCalendarioController {
+    def springSecurityService;
     def index = { redirect(action:list,params:params) }
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
 
     def list = {
+        springSecurityService.currentUser;
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
         [ EventoCalendarioInstanceList: list( params ), EventoCalendarioInstanceTotal: count() ]
     }
